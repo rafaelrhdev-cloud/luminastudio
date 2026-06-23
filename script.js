@@ -30,3 +30,43 @@
       setTimeout(()=>{ copyBtn.textContent = original; }, 1800);
     });
   });
+
+  // ===== modal de vista previa interactiva =====
+  const modal = document.getElementById('preview-modal');
+  const modalIframe = document.getElementById('modal-iframe');
+  const modalCat = document.getElementById('modal-cat');
+  const modalName = document.getElementById('modal-name');
+  const modalOpenTab = document.getElementById('modal-open-tab');
+
+  function openPreview(url, name, cat){
+    modalIframe.src = url;
+    modalName.textContent = name || '';
+    modalCat.textContent = cat || '';
+    modalOpenTab.href = url;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePreview(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(()=>{ modalIframe.src = ''; }, 250);
+  }
+
+  document.querySelectorAll('.cat-card-clickable').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // si el clic fue directamente en el link "Ver invitación", deja que navegue normal
+      if (e.target.closest('.cat-link')) return;
+      const url = card.dataset.url;
+      const name = card.dataset.name;
+      const cat = card.dataset.cat;
+      openPreview(url, name, cat);
+    });
+  });
+
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closePreview));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closePreview();
+  });
