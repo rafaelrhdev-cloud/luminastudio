@@ -31,6 +31,18 @@
     });
   });
 
+  // copy phone
+  const copyPhoneBtn = document.getElementById('copy-phone');
+  if (copyPhoneBtn) {
+    copyPhoneBtn.addEventListener('click', ()=>{
+      navigator.clipboard.writeText('4271278213').then(()=>{
+        const original = copyPhoneBtn.textContent;
+        copyPhoneBtn.textContent = '¡Copiado!';
+        setTimeout(()=>{ copyPhoneBtn.textContent = original; }, 1800);
+      });
+    });
+  }
+
   // ===== modal de vista previa interactiva =====
   const modal = document.getElementById('preview-modal');
   const modalIframe = document.getElementById('modal-iframe');
