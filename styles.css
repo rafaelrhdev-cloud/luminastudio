@@ -389,9 +389,10 @@
 
   .web-types{
     margin-top:30px;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
   }
-  @media (max-width:840px){.web-types{grid-template-columns:1fr;}}
+  @media (max-width:980px){.web-types{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.web-types{grid-template-columns:1fr;}}
   .web-type{
     border:1px solid var(--line);
     border-radius:8px;
