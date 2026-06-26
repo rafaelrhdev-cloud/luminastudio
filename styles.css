@@ -356,36 +356,40 @@
   .cat-card:hover .cat-link svg{transform:translate(2px,-2px);}
 
   /* ===== FEATURE CARD (sitios web negocios) ===== */
+  .feature-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+  }
+  @media (max-width:860px){.feature-grid{grid-template-columns:1fr;}}
+
   .feature-card{
     background:var(--bg-panel);
     border:1px solid var(--line);
     border-radius:10px;
     overflow:hidden;
-    display:grid;
-    grid-template-columns:1.3fr 1fr;
+    display:flex;
+    flex-direction:column;
     cursor:pointer;
     transition:.25s;
   }
   .feature-card:hover{
     border-color:var(--gold);
+    transform:translateY(-4px);
     box-shadow:0 30px 60px -30px rgba(201,162,39,.25);
   }
-  @media (max-width:820px){.feature-card{grid-template-columns:1fr;}}
-  .feature-preview{height:auto;min-height:280px;}
+  .feature-preview{height:240px;}
   .feature-preview .preview-frame-wrap{
-    width:250%;height:900px;
-  }
-  @media (max-width:820px){
-    .feature-preview{height:240px;}
-    .feature-preview .preview-frame-wrap{height:600px;}
+    width:250%;height:600px;
   }
   .feature-body{
-    padding:34px 36px;
+    padding:28px 28px 26px;
     display:flex;flex-direction:column;
-    justify-content:center;
+    flex:1;
   }
-  .feature-body h3{font-size:26px;margin-top:10px;color:var(--text-primary);}
-  .feature-body p{color:var(--text-muted);font-size:14.5px;line-height:1.7;margin-top:12px;}
+  .feature-body h3{font-size:23px;margin-top:10px;color:var(--text-primary);}
+  .feature-body p{color:var(--text-muted);font-size:14px;line-height:1.65;margin-top:10px;flex:1;}
+  .feature-body .cat-link{margin-top:18px;}
 
   .web-types{
     margin-top:30px;
